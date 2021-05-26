@@ -1,6 +1,6 @@
-const nextBtn = document.getElementById('next_button');
-const prevBtn = document.getElementById('prev-btton');
-const playBtn = document.getElementById('play_button');
+const nextButton = document.getElementById('next_button');
+const prevButton = document.getElementById('prev_button');
+const playButton = document.getElementById('play_button');
 const slideImage = document.getElementById('slider_images');
 const interval = 3000;
 
@@ -47,11 +47,11 @@ dots.forEach((dot, idx) => {
 function checkAutoPlay() {
     if (playing === 'true') {
         localStorage.setItem("isPlaying", "true");
-        playBtn.innerText = 'Stop';
+        playButton.innerText = 'Stop';
         startSlide();
     } else {
         localStorage.setItem("isPlaying", "false");
-        playBtn.innerText = 'Start';
+        playButton.innerText = 'Start';
         clearInterval(slideId);
     }
 }
@@ -82,30 +82,27 @@ function makeDots() {
 function checkForPlaying() {
     if (playing === 'true') {
         localStorage.setItem("isPlaying", "false");
-        playBtn.innerText = 'Start';
+        playButton.innerText = 'Start';
         clearInterval(slideId);
         playing = 'false';
     }
 }
 
 document.addEventListener('click', ev => {
-
-    if (ev.target === playBtn) {
+    if (ev.target === playButton) {
         if (playing === 'false') {
             playing = 'true';
             localStorage.setItem("isPlaying", "true");
-            playBtn.innerText = 'Stop';
+            playButton.innerText = 'Stop';
             startSlide();
         } else {
             localStorage.setItem("isPlaying", "false");
-            playBtn.innerText = 'Start';
+            playButton.innerText = 'Start';
             clearInterval(slideId);
             playing = 'false';
         }
     }
-
-
-    if (ev.target === nextBtn) {
+    if (ev.target === nextButton) {
         checkForPlaying()
         if (currentIndex == 4) {
             currentIndex = 0;
@@ -114,13 +111,13 @@ document.addEventListener('click', ev => {
         }
         updateBack();
         updateDots();
-        nextBtn.disabled = true;
+        nextButton.disabled = true;
         setTimeout(function () {
-            nextBtn.disabled = false;
+            nextButton.disabled = false;
         }, 1000);
     }
 
-    if (ev.target === prevBtn) {
+    if (ev.target === prevButton) {
         checkForPlaying()
         if (currentIndex == 0) {
             currentIndex = 4;
@@ -129,9 +126,9 @@ document.addEventListener('click', ev => {
         }
         updateBack();
         updateDots();
-        prevBtn.disabled = true;
+        prevButton.disabled = true;
         setTimeout(function () {
-            prevBtn.disabled = false;
+            prevButton.disabled = false;
         }, 1000);
     }
 
@@ -140,11 +137,11 @@ document.addEventListener('click', ev => {
 
 document.addEventListener('keydown', ev => {
     if (ev.code === 'ArrowRight') {
-        nextBtn.click();
+        nextButton.click();
     };
 
     if (ev.code === 'ArrowLeft') {
-        prevBtn.click();
+        prevButton.click();
     };
 
     if (ev.code === 'Escape') {
@@ -152,7 +149,7 @@ document.addEventListener('keydown', ev => {
     };
 
     if (ev.code === 'Space') {
-        playBtn.click();
+        playButton.click();
     };
 });
 
