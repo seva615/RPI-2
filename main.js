@@ -22,11 +22,11 @@ if (localStorage.getItem("isPlaying") == null) {
 playing = localStorage.getItem("isPlaying");
 
 
-const startSlide = () => {
+function startSlide(){
     slideId = setInterval(() => {
         moveToNextSlide();
     }, interval);
-};
+}
 
 checkAutoPlay();
 makeDots();
@@ -88,6 +88,24 @@ function checkForPlaying() {
     }
 }
 
+document.addEventListener('keydown', ev => {
+    if (ev.code === 'ArrowRight') {
+        nextButton.click();
+    };
+
+    if (ev.code === 'ArrowLeft') {
+        prevButton.click();
+    };
+
+    if (ev.code === 'Escape') {
+        window.close();
+    };
+
+    if (ev.code === 'Space') {
+        playButton.click();
+    };
+});
+
 document.addEventListener('click', ev => {
     if (ev.target === playButton) {
         if (playing === 'false') {
@@ -134,24 +152,6 @@ document.addEventListener('click', ev => {
 
 });
 
-
-document.addEventListener('keydown', ev => {
-    if (ev.code === 'ArrowRight') {
-        nextButton.click();
-    };
-
-    if (ev.code === 'ArrowLeft') {
-        prevButton.click();
-    };
-
-    if (ev.code === 'Escape') {
-        window.close();
-    };
-
-    if (ev.code === 'Space') {
-        playButton.click();
-    };
-});
 
 function moveToNextSlide() {
     if (currentIndex === 4) {
