@@ -2,7 +2,7 @@ const nextButton = document.getElementById('next_button');
 const prevButton = document.getElementById('prev_button');
 const playButton = document.getElementById('play_button');
 const slideImage = document.getElementById('slider_images');
-const interval = 3000;
+const interval = 2500;
 
 let slideId;
 let currentIndex;
